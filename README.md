@@ -9,8 +9,8 @@ Each product solves a problem backed by 2025–2026 evidence (surveys, regulatio
 | # | Product | Problem | Shape | Status |
 |---|---------|---------|-------|--------|
 | 1 | [Dunnit](https://github.com/saad-official/dunnit) · [live](https://getdunnit.vercel.app) | 59% of small businesses carry invoices 30+ days overdue (QuickBooks 2026). Reminders from accounting tools are static templates that cannot read replies. | AI agent: cadence, reply classification, approval queue, "$ recovered" dashboard | Live |
-| 2 | [CertChase](https://github.com/saad-official/certchase) | 7 in 10 collected certificates of insurance are non-compliant; small contractors track them in spreadsheets and find out after a claim. | Document-AI vertical SaaS: vision extraction, deterministic rule engine, broker chasing | In progress |
-| 3 | [Conformly](https://github.com/saad-official/conformly) | Four EU consumer-law rules landed in the last four months (withdrawal button 19 Jun 2026, green-claims ban 27 Sep 2026, EAA statement, AI-chatbot disclosure). No bundled scanner exists for small shops. | Compliance tool: crawler, rule checks, LLM claims linter, PDF report, monthly monitor | Planned |
+| 2 | [CertChase](https://github.com/saad-official/certchase) · [live](https://getcertchase.vercel.app) | 7 in 10 collected certificates of insurance are non-compliant; small contractors track them in spreadsheets and find out after a claim. | Document-AI vertical SaaS: vision extraction, deterministic rule engine, broker chasing | Live |
+| 3 | [Conformly](https://github.com/saad-official/conformly) | Four EU consumer-law rules landed in the last four months (withdrawal button 19 Jun 2026, green-claims ban 27 Sep 2026, EAA statement, AI-chatbot disclosure). No bundled scanner exists for small shops. | Compliance tool: crawler, rule checks, LLM claims linter, PDF report, monthly monitor | In progress |
 
 ## Stack (all free tiers)
 
