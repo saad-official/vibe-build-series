@@ -12,8 +12,8 @@ Each product solves a problem backed by 2025–2026 evidence (surveys, regulatio
 | 2 | [CertChase](https://github.com/saad-official/certchase) · [live](https://getcertchase.vercel.app) | 7 in 10 collected certificates of insurance are non-compliant; small contractors track them in spreadsheets and find out after a claim. | Document-AI vertical SaaS: vision extraction, deterministic rule engine, broker chasing | Live |
 | 3 | [Conformly](https://github.com/saad-official/conformly) · [live](https://getconformly.vercel.app) | Four EU consumer-law rules landed in the last four months (withdrawal button 19 Jun 2026, green-claims ban 27 Sep 2026, EAA statement, AI-chatbot disclosure). No bundled scanner exists for small shops. | Compliance tool: crawler, rule checks, LLM claims linter, PDF report, monthly monitor | Live |
 | 4 | [Attestly](https://github.com/saad-official/attestly) | Small SaaS vendors spend 20–40 hours per security questionnaire; incumbents are annual compliance-platform contracts. | RAG SaaS: pgvector on Neon, citation guardrails, spreadsheet round-trip, answer library | In progress |
-| 5 | Speed-to-lead agent | Small businesses take ~47 hours to answer a lead; 4.7% reply within 5 minutes. | AI agent: lead scoring, instant reply with real slots, email negotiation, booking page | Planned |
-| 6 | Chargeback evidence builder | Dispute tools take 25% of recovered amounts; small merchants skip representment. | Stripe tool: evidence packets by reason code, submission via Disputes API, win-rate tracking | Planned |
+| 5 | [Firstreply](https://github.com/saad-official/firstreply) | Small businesses take ~47 hours to answer a lead; 4.7% reply within 5 minutes. | AI agent: lead scoring, instant reply with real slots, email negotiation, booking page | In progress |
+| 6 | [Disputely](https://github.com/saad-official/disputely) | Dispute tools take 25% of recovered amounts; small merchants skip representment. | Stripe tool: evidence packets by reason code, submission via Disputes API, win-rate tracking | In progress |
 
 ## Stack (all free tiers)
 
