@@ -11,11 +11,14 @@ Each product solves a problem backed by 2025–2026 evidence (surveys, regulatio
 | 1 | [Dunnit](https://github.com/saad-official/dunnit) · [live](https://getdunnit.vercel.app) | 59% of small businesses carry invoices 30+ days overdue (QuickBooks 2026). Reminders from accounting tools are static templates that cannot read replies. | AI agent: cadence, reply classification, approval queue, "$ recovered" dashboard | Live |
 | 2 | [CertChase](https://github.com/saad-official/certchase) · [live](https://getcertchase.vercel.app) | 7 in 10 collected certificates of insurance are non-compliant; small contractors track them in spreadsheets and find out after a claim. | Document-AI vertical SaaS: vision extraction, deterministic rule engine, broker chasing | Live |
 | 3 | [Conformly](https://github.com/saad-official/conformly) · [live](https://getconformly.vercel.app) | Four EU consumer-law rules landed in the last four months (withdrawal button 19 Jun 2026, green-claims ban 27 Sep 2026, EAA statement, AI-chatbot disclosure). No bundled scanner exists for small shops. | Compliance tool: crawler, rule checks, LLM claims linter, PDF report, monthly monitor | Live |
+| 4 | [Attestly](https://github.com/saad-official/attestly) | Small SaaS vendors spend 20–40 hours per security questionnaire; incumbents are annual compliance-platform contracts. | RAG SaaS: pgvector on Neon, citation guardrails, spreadsheet round-trip, answer library | In progress |
+| 5 | Speed-to-lead agent | Small businesses take ~47 hours to answer a lead; 4.7% reply within 5 minutes. | AI agent: lead scoring, instant reply with real slots, email negotiation, booking page | Planned |
+| 6 | Chargeback evidence builder | Dispute tools take 25% of recovered amounts; small merchants skip representment. | Stripe tool: evidence packets by reason code, submission via Disputes API, win-rate tracking | Planned |
 
 ## Stack (all free tiers)
 
 - Next.js 16 (App Router), React 19, TypeScript 5, Tailwind 4, shadcn/ui
-- Supabase (Postgres, Auth, Storage, pg_cron) with SQL migrations as the source of truth for apps 1–2; Drizzle + Better Auth over plain Postgres for app 3
+- Supabase (Postgres, Auth, Storage, pg_cron) with SQL migrations as the source of truth for apps 1–2; Neon Postgres with Drizzle + Better Auth for apps 3–6 (pgvector where retrieval is needed)
 - Vercel AI SDK 7 with Gemini (Flash-Lite for extraction and vision) and Groq (gpt-oss for drafting and classification)
 - Stripe sandboxes: Checkout, Customer Portal, subscriptions, webhooks
 - Vercel Hobby for hosting, Vercel Analytics, Sentry free tier
