@@ -98,3 +98,23 @@ Notes on certainty: the RevenueCat 1% figure comes from a third-party cost site,
 - **Batch native changes.** With 15 builds per platform per month on a low-priority queue, group native changes (config plugins, widget targets, new native modules) into few builds and ship all JS changes through EAS Update (within the 1K MAU cap).
 - **Distribution to real devices** needs a paid Apple Developer account for ad hoc builds; without one, iOS testing is limited to Xcode sideloading on the owner's Mac.
 - **Health copy discipline (Dosely).** Reminder tool only; no dosing advice; local-first encrypted storage so no health data reaches a free-tier backend by default.
+
+## F. Apps 12 and 13 (added 2026-10-06)
+
+The owner asked for two more native apps after Punchcard and Dosely: small or medium, free is fine, must stand out in their category. Searches on 2026-10-06 (same caveats as section A).
+
+### Chosen 3: Templog (free food-safety temperature log for small kitchens)
+- **Rule the app encodes.** FDA Food Code 3-501.14 two-stage cooling (135→70 °F within 2 h, then →41 °F within the following 4 h) and 3-501.16 holding (hot ≥135 °F, cold ≤41 °F); best practice is a holding check every 2 h ([Transact](https://www.transact-tech.com/resources/blog/temperature-danger-zone), [open-exam-prep RE/HS guide](https://open-exam-prep.com/study-guides/rehs/food-safety-inspections/fda-food-code-temperature-control)).
+- **Pain.** Staff forget checks and paper sheets get lost ([Xenia, vendor](https://www.xenia.team/articles/best-food-temperature-log-apps); [ThermoWorks, vendor](https://www.thermoworks.com/still-using-paper-temperature-logs/)).
+- **Incumbent pricing.** ThermoWorks from $9/mo, Zip HACCP $59.99/location/mo, FoodDocs from $84/mo, Jolt "requires more training" ([Xenia](https://www.xenia.team/articles/best-food-temperature-log-apps), [Operandio](https://operandio.com/food-safety-app/), [FoodDocs](https://www.fooddocs.com/post/food-safety-app)). All are chain-oriented SaaS.
+- **Gap.** A free, offline-first, single-kitchen log whose reminders reach the line (Live Activity cooling timers, widgets, push) and whose PDF an inspector accepts.
+
+### Chosen 4: Turnproof (free turnover checklist with photo proof for cleaners and small hosts)
+- **Pain.** "It wasn't clean" and damage disputes are decided by timestamped before/after photos per room; without them hosts "have almost no way to prove" their case ([Timemark](https://www.timemark.com/blog/how-airbnb-handles-cleaning-disputes), [STR Specialist](https://strspecialist.com/airbnb-cleaning-photo-proof-the-simple-system-that-ends-it-wasn-t-clean-)). Airbnb's 2026 damage policy §3.3.3 reserves the right to deny AI-generated or unverifiable evidence; AirCover claims must be filed within 14 days ([RedAwning](https://www.redawning.com/pm/post/airbnb-policy-changes-2026-property-managers)).
+- **Adoption.** Cleaning software is used by 52% of operators with 1–5 properties (Hostfully 2026 Tech Stack Study, 2,248 accounts; [Hostfully, vendor](https://www.hostfully.com/blog/airbnb-cleaning-software/)).
+- **Incumbents.** Turno from $10 per feature per month, TurnFlow $79/mo flat, Breezeway/Properly/Operto for larger operators ([GetApp](https://www.getapp.com/real-estate-property-software/a/turno/), [Capterra](https://www.capterra.com/p/10044803/TurnFlow/)). They are host-side scheduling platforms or marketplaces.
+- **Gap.** A cleaner-first, free app: camera-only proof photos stamped with time, GPS and a content hash, a Live Activity for the turnover in progress, and a proof link the host opens without an account.
+
+### Considered and dropped
+- Shared pet-care tracker: many 2026 entrants already do household sync (Pawlo, DogNote, Dog Daily, PawLog) ([Pawlo blog](https://getpawlo.app/blog/best-shared-pet-care-apps-couples-2026)).
+- Contractions timer: one-time use, small audience.
