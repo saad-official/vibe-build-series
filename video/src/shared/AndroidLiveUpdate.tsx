@@ -50,6 +50,9 @@ type Props = {
   /** Indeterminate segment position 0..1 (animate it). */
   sweep?: number;
   progressColor: string;
+  /** Segmented progress (one colour per segment), drawn instead of `progress` when given. */
+  segments?: string[];
+  /** Action buttons; an empty list draws none (a Live Update without actions). */
   actions: { label: string; primary?: boolean }[];
   primaryColor: string;
   onPrimary: string;
@@ -69,6 +72,7 @@ export function AndroidLiveUpdate({
   progress,
   sweep = 0,
   progressColor,
+  segments,
   actions,
   primaryColor,
   onPrimary,
@@ -88,7 +92,13 @@ export function AndroidLiveUpdate({
       <div style={{ marginTop: 8, fontSize: 15, fontWeight: 650, lineHeight: "20px" }}>{title}</div>
       <div style={{ fontSize: 13, lineHeight: "18px", color: scheme.onCardMuted, ...tabular }}>{text}</div>
       {subText ? <div style={{ fontSize: 13, lineHeight: "18px", color: scheme.onCardMuted, ...tabular }}>{subText}</div> : null}
-      {progress !== undefined ? (
+      {segments ? (
+        <div style={{ display: "flex", gap: 3, marginTop: 10 }}>
+          {segments.map((color, i) => (
+            <span key={i} style={{ flex: 1, height: 5, borderRadius: 999, background: color }} />
+          ))}
+        </div>
+      ) : progress !== undefined ? (
         <div style={{ position: "relative", marginTop: 10, height: 5, borderRadius: 999, background: scheme.track, overflow: "hidden" }}>
           {progress === "indeterminate" ? (
             <span
@@ -107,26 +117,28 @@ export function AndroidLiveUpdate({
           )}
         </div>
       ) : null}
-      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-        {actions.map((a) => (
-          <span
-            key={a.label}
-            style={{
-              flex: 1,
-              height: 34,
-              borderRadius: 999,
-              display: "grid",
-              placeItems: "center",
-              fontSize: 13,
-              fontWeight: 650,
-              background: a.primary ? primaryColor : scheme.action,
-              color: a.primary ? onPrimary : scheme.onAction,
-            }}
-          >
-            {a.label}
-          </span>
-        ))}
-      </div>
+      {actions.length > 0 ? (
+        <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+          {actions.map((a) => (
+            <span
+              key={a.label}
+              style={{
+                flex: 1,
+                height: 34,
+                borderRadius: 999,
+                display: "grid",
+                placeItems: "center",
+                fontSize: 13,
+                fontWeight: 650,
+                background: a.primary ? primaryColor : scheme.action,
+                color: a.primary ? onPrimary : scheme.onAction,
+              }}
+            >
+              {a.label}
+            </span>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
