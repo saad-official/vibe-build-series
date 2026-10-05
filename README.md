@@ -17,6 +17,8 @@ Each product solves a problem backed by 2025–2026 evidence (surveys, regulatio
 | 7 | [Changelog Forge](https://github.com/saad-official/changelog-forge) · [live](https://changelogforge.vercel.app) | Release notes are skipped or unreadable; commit logs hold the facts but not the story. | AI pipeline: map-reduce over commits, structured outputs, model routing, verifier, eval harness, GitHub Action (Python FastAPI + Next.js) | Live |
 | 8 | [DocPilot RN](https://github.com/saad-official/docpilot-rn) · [live](https://docpilotrn.vercel.app) | Expo/React Native docs change every SDK version; answers found online target other versions. | RAG: version-pinned hybrid retrieval, reranking, verified citations, streamed answers, published eval numbers | Live |
 | 9 | [Review Radar](https://github.com/saad-official/review-radar) · [live](https://getreviewradar.vercel.app) | Small mobile teams drown in app-store reviews; signal is buried and replies are late. | Agent: clustering, structured signals, drafted replies and GitHub issues behind human approval, memory, trajectory evals | Live (agent demo pending quota) |
+| 10 | [Punchcard](https://github.com/saad-official/punchcard) · [live](https://getpunchcard.vercel.app) | Manual time tracking loses ~1 in 5 billable hours; ClockShark charges $40/mo + $9/user on 3-year contracts. | Native Expo app (iOS + Android): Live Activity / Android 16 Live Update job timer, widgets, geofence nudges, PDF/CSV timesheets, RevenueCat subscription; Next.js landing + sync API | In progress |
+| 11 | [Dosely](https://github.com/saad-official/dosely) · [live](https://getdosely.vercel.app) | Medisafe forced a paid plan on 1 Jan 2026 (free capped at 2 meds); ~50% of chronic patients are non-adherent. | Native Expo app (iOS + Android): actionable reminders, dose-window Live Activity, widgets, caregiver escalation push, seasonal themes with matching app icons, local-first encrypted data; free, no paywall | In progress |
 
 ## Stack (all free tiers)
 
@@ -26,6 +28,20 @@ Each product solves a problem backed by 2025–2026 evidence (surveys, regulatio
 - Stripe sandboxes: Checkout, Customer Portal, subscriptions, webhooks
 - Vercel Hobby for hosting, Vercel Analytics, Sentry free tier
 - Email in demo mode (Resend shared sender to the owner's inbox; inbound replies simulated) until a custom domain exists
+
+## Mobile stack (batch 4)
+
+Apps 10 and 11 are native mobile apps rather than web SaaS:
+
+- Expo SDK 57 with expo-router native tabs, Reanimated 4, expo-haptics, expo-glass-effect
+- expo-widgets (iOS widgets and Live Activities); expo-live-updates and react-native-android-widget (Android)
+- expo-notifications with Expo Push
+- expo-sqlite + Drizzle, local-first
+- Better Auth Expo plugin against each app's Next.js API on Vercel, with Neon Postgres
+- RevenueCat Test Store for subscriptions
+- EAS Build and EAS Update on the free plan
+
+[research/research-native-mobile.md](research/research-native-mobile.md) holds the evidence and the platform facts behind these choices.
 
 See [docs/plan.md](docs/plan.md) for the full plan and [research/](research/) for the market research that picked these problems.
 
