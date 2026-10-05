@@ -1,0 +1,13 @@
+# Standalone project (not part of any app workspace). pnpm 12 needs build scripts reviewed.
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@remotion/bundler@4.0.533'
+  - '@remotion/cli@4.0.533'
+  - '@remotion/media-parser@4.0.533'
+  - '@remotion/studio-server@4.0.533'
+  - '@remotion/studio-shared@4.0.533'
+  - '@remotion/studio@4.0.533'
+  - '@remotion/timeline-utils@4.0.533'
+  - remotion@4.0.533
+nodeLinker: hoisted

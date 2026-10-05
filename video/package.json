@@ -1,0 +1,27 @@
+{
+  "name": "vibe-video",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Programmatic product videos for the Vibe Build Series apps (Remotion).",
+  "scripts": {
+    "studio": "remotion studio",
+    "typecheck": "tsc --noEmit",
+    "render:punchcard": "remotion render punchcard out/punchcard.mp4 --codec h264 --crf 23",
+    "render:dosely": "remotion render dosely out/dosely.mp4 --codec h264 --crf 23",
+    "poster:punchcard": "remotion still punchcard out/punchcard-poster.jpg --frame 418 --image-format jpeg --jpeg-quality 85",
+    "poster:dosely": "remotion still dosely out/dosely-poster.jpg --frame 425 --image-format jpeg --jpeg-quality 85"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.532",
+    "@remotion/cli": "4.0.532",
+    "@remotion/renderer": "4.0.532",
+    "@remotion/transitions": "4.0.532",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
