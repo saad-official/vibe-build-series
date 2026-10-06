@@ -19,15 +19,18 @@ Every mobile app passes `pnpm typecheck`, `expo lint`, `expo-doctor` (21/21) and
 2. **RevenueCat (Punchcard only)** — sign up at app.revenuecat.com (GitHub login), create project "Punchcard", open the auto-created **Test Store** and copy its API key into `G:\Vibe Engineering Apps\.secrets\punchcard-revenuecat-test-key.txt`. Then in RevenueCat create entitlement `pro`, products `pro_monthly` / `pro_yearly` in the Test Store, and an offering `default` with both. The app reads the key from `EXPO_PUBLIC_REVENUECAT_TEST_KEY` (put it in `apps/mobile/.env` as `EXPO_PUBLIC_REVENUECAT_TEST_KEY=...`). Release builds need a real store key; dev builds use the Test Store.
 3. **Firebase (optional, Android push only)** — create a Firebase project per app, download `google-services.json` into `apps/mobile/`, add `"googleServicesFile": "./google-services.json"` under `android` in `app.json`, and upload the FCM V1 key with `npx eas-cli credentials`. Local notifications, Live Updates and widgets do not need this; only server-sent pushes (weekly summaries, caregiver alerts) do.
 
-## 2. Android 16 phone (the quickest device pass)
+## 2. Android 16 phone — the APKs are ready
 
-Per app, after `eas init`:
+Development builds finished on EAS on 2026-10-06. Open each link on the phone, install, then on the PC run `cd <app>/apps/mobile && npx expo start --dev-client` (same Wi-Fi, or add `--tunnel`) and open the app. Dev builds show a "Load demo data" row in Settings.
 
-```bash
-cd apps/mobile && npx eas-cli build -p android --profile development
-```
+| App | APK |
+|---|---|
+| Punchcard | https://expo.dev/artifacts/eas/Lp1h58cy_Mz5LnllYuUuhmSfDDYG_6Z-YjYvDo6o9gI.apk |
+| Dosely | https://expo.dev/artifacts/eas/lZeAyZNst0cve15m2n0HBgW7hEWW9GUbnBGQw0dJzDA.apk |
+| Templog | https://expo.dev/artifacts/eas/zEZhBp0SBjMqiUvGBlrBw-6lwvQYZX4QwL59cjuaNvs.apk |
+| Turnproof | https://expo.dev/artifacts/eas/Vil5GdUGJlGQEner7Yr5qF39zK_utyAo4R091IEsabs.apk |
 
-Install the resulting APK from the build page on the phone (USB debugging not required). Start Metro on the PC: `npx expo start --dev-client` and open the app (same Wi-Fi, or `--tunnel`). Settings → "Load demo data" (dev builds only) fills each app.
+Build pages: https://expo.dev/accounts/sadi123/projects/<app>/builds. Re-build any app with `npx eas-cli build -p android --profile development` from its `apps/mobile` folder (commit first; EAS uploads the committed tree).
 
 Check per app:
 - **Punchcard**: clock in → Android 16 Live Update appears in the shade with the running job; add the Today widget (2×1 and 4×2); the 4×2 Start button clocks in from the launcher; "still clocked in" notification actions; Settings → Plan → Upgrade opens the RevenueCat Test Store paywall and the purchase unlocks Pro; export a PDF.
