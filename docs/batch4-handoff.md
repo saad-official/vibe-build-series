@@ -13,6 +13,8 @@ Every mobile app passes `pnpm typecheck`, `expo lint`, `expo-doctor` (21/21) and
 
 ## 1. One-time sign-ins (you)
 
+> Status 2026-10-06: EAS login done (account `sadi123`); all four EAS projects created and EAS Update configured; Punchcard's RevenueCat Test Store key stored as the EAS env var `EXPO_PUBLIC_REVENUECAT_TEST_KEY`; Android development builds queued from this machine. Still yours: the iOS credentials step below and the RevenueCat entitlement/products setup.
+
 1. **Expo / EAS** — in any repo: `cd apps/mobile && npx eas-cli login` (browser). Then, per app, `npx eas-cli init` (creates the EAS project id; it writes `extra.eas.projectId` into `app.json` — commit it) and `npx eas-cli update:configure` (adds `updates.url`). Free plan: 15 Android + 15 iOS cloud builds per month.
 2. **RevenueCat (Punchcard only)** — sign up at app.revenuecat.com (GitHub login), create project "Punchcard", open the auto-created **Test Store** and copy its API key into `G:\Vibe Engineering Apps\.secrets\punchcard-revenuecat-test-key.txt`. Then in RevenueCat create entitlement `pro`, products `pro_monthly` / `pro_yearly` in the Test Store, and an offering `default` with both. The app reads the key from `EXPO_PUBLIC_REVENUECAT_TEST_KEY` (put it in `apps/mobile/.env` as `EXPO_PUBLIC_REVENUECAT_TEST_KEY=...`). Release builds need a real store key; dev builds use the Test Store.
 3. **Firebase (optional, Android push only)** — create a Firebase project per app, download `google-services.json` into `apps/mobile/`, add `"googleServicesFile": "./google-services.json"` under `android` in `app.json`, and upload the FCM V1 key with `npx eas-cli credentials`. Local notifications, Live Updates and widgets do not need this; only server-sent pushes (weekly summaries, caregiver alerts) do.
@@ -33,7 +35,17 @@ Check per app:
 - **Templog**: log a reading from the Today board in two taps; a fail requires a corrective action; start a cooling item → Live Update with the stage progress; Next Check widget; History → export the inspector PDF.
 - **Turnproof**: create a property from templates, schedule a turnover, Start → camera before photo (stamp chip shows time + GPS) → checklist → after photo → Room done → Finish → sign in → Publish proof link → open the link in a browser (verified badge) → Revoke → link returns 410.
 
-## 3. iPhone (your Mac)
+## 3. iPhone — EAS cloud build (no Mac needed)
+
+The first iOS build per app must create signing credentials with your Apple Developer account, which EAS CLI can only do interactively. Run once per app (it asks for your Apple ID, then registers your iPhone for ad-hoc installs via a link/QR):
+
+```bash
+cd apps/mobile && npx eas-cli build -p ios --profile development
+```
+
+If the iPhone isn't registered yet, run `npx eas-cli device:create` first and open the link on the phone. After the credentials exist, further iOS builds can be triggered non-interactively from here. Install the build from the EAS build page on the phone and start Metro with `npx expo start --dev-client`.
+
+## 3b. iPhone (your Mac, alternative)
 
 Each repo has `docs/testing-on-mac.md`. Short version:
 
