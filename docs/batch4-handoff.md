@@ -79,3 +79,6 @@ Root causes of "theme looks bad in dark mode / weird shadows":
 - **Dosely:** seasonal motifs calibrated to a fixed low contrast, hidden under Reduce Motion; instant scheme switch (no half-faded text); day-grid and swatch text pick white or ink per colour.
 
 Still worth a look on real devices: keypad height on an iPhone SE (Templog), keyboard handling in Android sheets, and a brief white flash in dark mode during keyboard resizes (the Android window background is not set at runtime yet).
+
+### Dosely on Android: icons and dev builds
+Changing the seasonal icon on Android enables an `<activity-alias>` and disables `MainActivity`. Two consequences handled in code: the switch is deferred until the app goes to the background (otherwise Android closes the task mid-use), and it is skipped entirely in **development builds**, because expo-dev-launcher starts `MainActivity` by name and would crash on the next launch. To test icon switching on Android use the **preview build** (no dev launcher) listed in section 2; on iOS it works in every build.
