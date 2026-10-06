@@ -26,7 +26,7 @@ Development builds finished on EAS on 2026-10-06. Open each link on the phone, i
 | App | APK |
 |---|---|
 | Punchcard | https://expo.dev/artifacts/eas/Lp1h58cy_Mz5LnllYuUuhmSfDDYG_6Z-YjYvDo6o9gI.apk |
-| Dosely | https://expo.dev/artifacts/eas/lZeAyZNst0cve15m2n0HBgW7hEWW9GUbnBGQw0dJzDA.apk |
+| Dosely | https://expo.dev/artifacts/eas/v3Ye9blhYUeYDPa2vZ260NF1tNJRFNftQrxmDGEv9A4.apk (rebuilt 6 Oct with the icon-alias deep-link fix) |
 | Templog | https://expo.dev/artifacts/eas/zEZhBp0SBjMqiUvGBlrBw-6lwvQYZX4QwL59cjuaNvs.apk |
 | Turnproof | https://expo.dev/artifacts/eas/Vil5GdUGJlGQEner7Yr5qF39zK_utyAo4R091IEsabs.apk |
 
