@@ -66,3 +66,16 @@ Xcode will ask for your team for the app and the `ExpoWidgetsTarget` extension (
 - `expo-live-updates` is alpha: Android Live Updates have no buttons (actions come from the ongoing notification) and no ticking chronometer in Punchcard (text refreshes each minute while the app is open).
 - Push from the server (weekly summaries, caregiver alerts) needs the Firebase step; iOS push needs `eas credentials` to upload an APNs key.
 - Product videos are recreated from the design system (labelled as such on each landing page), not screen recordings.
+
+## 5. Design QA pass (6 Oct, after the first device tests)
+
+One Opus agent per app audited every screen and component for light/dark correctness, shadows, contrast, layout and native-slop tells, with typecheck, lint and bundle exports as gates. All fixes are committed; they are JavaScript-only, so the installed dev builds pick them up from Metro (Punchcard additionally got a native rebuild for its splash colours).
+
+Root causes of "theme looks bad in dark mode / weird shadows":
+- **Dosely, Turnproof:** the shadow colour was the ink colour, which is lighter than the dark surfaces, so every card drew a pale halo. Dark shadows are now black at low opacity; the web tokens follow.
+- **Punchcard:** the shadow colour equalled the dark page colour (invisible shadows or dark halos over overlapping surfaces); dark mode now uses a 1 pt rim plus a faint black drop.
+- **Templog:** iOS context-menu previews on transparent rows traced a shadow around each glyph; rows got an opaque background.
+- **All four:** dark "sunken" fills and separators were ~1.05:1 against the page (invisible wells, text fields, chips, hairlines) → lifted fills; 45%-opacity disabled buttons → neutral fill + tertiary label; shadows removed from translucent blur fallbacks; `boxShadow` never on a clipping view; `textTertiary` no longer used for informative text; Android-only controls (segmented control, action sheet, pull-to-refresh, tab badges) now take the brand palette instead of wallpaper colours; toasts clear the Android tab bar and iOS form sheets.
+- **Dosely:** seasonal motifs calibrated to a fixed low contrast, hidden under Reduce Motion; instant scheme switch (no half-faded text); day-grid and swatch text pick white or ink per colour.
+
+Still worth a look on real devices: keypad height on an iPhone SE (Templog), keyboard handling in Android sheets, and a brief white flash in dark mode during keyboard resizes (the Android window background is not set at runtime yet).
