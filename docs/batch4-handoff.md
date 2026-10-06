@@ -82,3 +82,11 @@ Still worth a look on real devices: keypad height on an iPhone SE (Templog), key
 
 ### Dosely on Android: icons and dev builds
 Changing the seasonal icon on Android enables an `<activity-alias>` and disables `MainActivity`. Two consequences handled in code: the switch is deferred until the app goes to the background (otherwise Android closes the task mid-use), and it is skipped entirely in **development builds**, because expo-dev-launcher starts `MainActivity` by name and would crash on the next launch. To test icon switching on Android use the **preview build** (no dev launcher) listed in section 2; on iOS it works in every build.
+
+### Second device pass (6 Oct, evening) — Dosely end to end, Turnproof spot check
+Walked Dosely on the Android 16 phone after a clean install: onboarding → notification permission → empty Today → demo data → Today / Meds / History / Circle / Settings, medication detail and the three-step editor, Taken + Undo, theme switch (New Year) in dark and light. Fixed and pushed, all JS-only (dev builds pick them up from Metro):
+- **All four apps:** empty-state call-to-action buttons sat left-aligned under centred text (`PrimaryButton`'s non-block `alignSelf` overrode the centred wrapper) → centred.
+- **Dosely, Templog, Turnproof:** Android segmented controls now use Material 3 `SegmentedButton`s with explicit theme colours (Punchcard already did); the community wrapper left outlines/labels on the wallpaper's Material You palette, so they showed pale rims on dark sheets.
+- **Dosely:** the editor's "Daily / Interval / Some days / As needed" picker wrapped its labels at phone width → single-choice chips (same control as Form); medication detail's Supply row squeezed "Runs out around …" into a 3-line column → short count on the right, refill sentence as subtitle; Settings → Quiet hours row did the same → one subtitle sentence.
+- **Dosely Android:** seasonal icon switching deferred to background and skipped in development builds (see above); a preview build without the dev launcher is queued for icon testing.
+Known dev-build-only quirk: expo-dev-launcher's floating "Tools" bubble sits over the top-right header action (Add / Edit / Skip) on Android. Turn it off from the dev menu ("Tools button") while testing; it does not exist in preview/production builds.
